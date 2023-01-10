@@ -1,2 +1,2 @@
-# MERN-Stack-Blog-App
-Blog App using MERN Stack
+# Blog Website Fullstack MERN
+ 

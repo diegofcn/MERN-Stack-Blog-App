@@ -1,17 +1,25 @@
-export default function Post() {
-    return (
-        <div className="post">
-        <div className="image">
-        <img src="https://cdn.wpbeginner.com/wp-content/uploads/2022/11/why-blog-benefits-blogging-og.png" alt="" />
-        </div>
-        <div className="texts">
-          <h2>Why Blog? 14 Benefits of Blogging in 2023</h2>
-          <p className="info">
-            <a className="author">Brandon</a>
-            <time>01-01-2023 16:45</time>
-          </p>
-          <p className="summary">Blogging has been around since 1993 and has become an essential marketing tool for many businesses. Currently, there are 1.9 billion websites in the world, and over 600 million are blogs. </p>
-        </div>
+import { formatISO9075 } from "date-fns";
+import { Link } from "react-router-dom";
+
+export default function Post({_id,title,summary,cover,content,createdAt,author}) {
+
+  return (
+    <div className="post">
+      <div className="image">
+        <Link to={`/post/${_id}`}>
+          <img src={'http://localhost:4000/'+cover} alt=""/>
+        </Link>
       </div>
-    )
+      <div className="texts">
+        <Link to={`/post/${_id}`}>
+        <h2>{title}</h2>
+        </Link>
+        <p className="info">
+          <a className="author">{author.username}</a>
+          <time>{formatISO9075(new Date(createdAt))}</time>
+        </p>
+        <p className="summary">{summary}</p>
+      </div>
+    </div>
+  );
 }
